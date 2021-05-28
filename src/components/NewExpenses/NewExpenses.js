@@ -38,10 +38,19 @@ const NewExpensesdiv = styled.div`
     }
 `
 
-const NewExpenses = () => {
+const NewExpenses = (props) => {
+
+    const onSubmitData = (enteredExpenseData) => {
+        const expenseData = {
+            ...enteredExpenseData,
+            id: Math.random().toString()
+        };
+        props.onSubmitExpenses(expenseData)
+    }
+
     return(
-        <NewExpensesdiv>
-            <ExpenseForm/>
+        <NewExpensesdiv >
+            <ExpenseForm onSubmitRecive={onSubmitData}/>
         </NewExpensesdiv>
     )
 }

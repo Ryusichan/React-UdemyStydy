@@ -29,10 +29,17 @@ const App = () => {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  const onSubExpenses = (enterdExpenseData) => {
+    const expenseApp = {
+      ...enterdExpenseData
+    };
+    console.log('app', expenseApp);
+  }
   
   return (
     <div className="App">
-        <NewExpenses/>
+        <NewExpenses onSubmitExpenses={onSubExpenses}/>
         <Expenses items={expenses}/>
     </div>
 

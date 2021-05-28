@@ -12,8 +12,6 @@ const ExpenseItem = (props) => {
         setTitle("nono");
     }
 
-    console.log(handleChangeTitle)
-
     return(
         <Card className="expense-item">
             <ExpenseDate date={props.date}/>
