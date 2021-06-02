@@ -3,6 +3,7 @@ import ExpenseItem from './ExpenseItem'
 import Card from '../UI/Card'
 import styled from 'styled-components'
 import ExpensesFilter from '../ExpensesFilter/ExpensesFilter'
+import ExpensesList from './ExpensesList'
 
 const Cards = styled(Card)`
     padding: 1rem;
@@ -23,19 +24,11 @@ const dateInfo = props.items.filter(expense => {
   return expense.date.getFullYear().toString() === useFilter;
 })
 
-console.log('filterYear', dateInfo)
-
 return (
   <div>
     <Cards className="expenses">
       <ExpensesFilter selected={useFilter} onChangeFilter={onSubmitDate} />
-      {dateInfo.map((expense) => 
-        <ExpenseItem 
-          key={expense.id}
-          title={expense.title} 
-          date={expense.date} 
-          amount={expense.amount}
-        />)}
+      <ExpensesList items={dateInfo}/>
     </Cards>
     </div>
 );

@@ -31,6 +31,7 @@ const ExpenseForm = (props) => {
     const [ addTitle, setAddtitle ] = useState('');
     const [ addAmount, setAddAmount ] = useState('');
     const [ addDate, setAddDate ]= useState('');
+    // const [ hidebtn, setHidebtn ] = usestate();
     // const [ userInput, setUserInput ] = useState({   //react Hook multi use
     //     enterTitle: '',
     //     enterAmount: '',
@@ -80,6 +81,10 @@ const ExpenseForm = (props) => {
 
     }
 
+    // const hidebtn = props.hideBtnhandler;
+
+    // console.log('hidebtn', hidebtn)
+
     return (
         <form onSubmit={submitHandler}>
             <NewExpenseControls>
@@ -96,7 +101,8 @@ const ExpenseForm = (props) => {
                     <input type="date" value={addDate} min="2019-01-01" step="2022-12-31" onChange={setAddDateHandler}/>
                 </NewExpenseControl>
                 <NewExpenseActions>
-                    <button type="submit">Add Expense</button>
+                    <button type="button" onClick={props.hideBtnhandler}>Add Expense</button>
+                    <button type="submit">Cancel</button>
                 </NewExpenseActions>
             </NewExpenseControls>
         </form>

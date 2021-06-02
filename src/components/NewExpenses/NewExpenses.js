@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ExpenseForm from './ExpenseForm';
 import styled from 'styled-components';
 
@@ -40,17 +40,32 @@ const NewExpensesdiv = styled.div`
 
 const NewExpenses = (props) => {
 
+    const [ hideBtn, setHidebtn ] = useState(false);
+
     const onSubmitData = (enteredExpenseData) => {
         const expenseData = {
             ...enteredExpenseData,
             id: Math.random().toString()
         };
-        props.onSubmitExpenses(expenseData)
+        props.onSubmitExpenses(expenseData);
+        setHidebtn(false);
+    }
+
+    const setbtnHandler = () => {
+        setHidebtn(true);
+    }
+    const closeHandler = () => {
+        setHidebtn(false);
+    }
+
+    // console.log('hidebtn', hideBtn);
+    if(hideBtn === false){
+        return <button onClick={setbtnHandler}>Add New Expense</button>;
     }
 
     return(
         <NewExpensesdiv >
-            <ExpenseForm onSubmitRecive={onSubmitData}/>
+            <ExpenseForm hideBtnhandler={closeHandler} onSubmitRecive={onSubmitData}/>
         </NewExpensesdiv>
     )
 }
