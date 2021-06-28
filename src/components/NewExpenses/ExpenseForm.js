@@ -28,9 +28,9 @@ const NewExpenseActions = styled.div`
 `
 
 const ExpenseForm = (props) => {
-    const [ addTitle, setAddtitle ] = useState('');
-    const [ addAmount, setAddAmount ] = useState('');
-    const [ addDate, setAddDate ]= useState('');
+    const [addTitle, setAddtitle] = useState('');
+    const [addAmount, setAddAmount] = useState('');
+    const [addDate, setAddDate] = useState('');
     // const [ hidebtn, setHidebtn ] = usestate();
     // const [ userInput, setUserInput ] = useState({   //react Hook multi use
     //     enterTitle: '',
@@ -64,12 +64,12 @@ const ExpenseForm = (props) => {
         // })
     }
 
-    const submitHandler = ( event ) => {
+    const submitHandler = (event) => {
         event.preventDefault();
 
         const expense = {
             title: addTitle,
-            amount: addAmount,
+            amount: +addAmount,
             date: new Date(addDate)
         }
 
@@ -90,15 +90,15 @@ const ExpenseForm = (props) => {
             <NewExpenseControls>
                 <NewExpenseControl>
                     <label>Title</label>
-                    <input type="text" value={addTitle} onChange={setAddTitleHandler}/>
+                    <input type="text" value={addTitle} onChange={setAddTitleHandler} />
                 </NewExpenseControl>
                 <NewExpenseControl>
                     <label>Amount</label>
-                    <input type="number" value={addAmount} min="0.01" step="0.01" onChange={setAddAmountHandler}/>
+                    <input type="number" value={addAmount} min="0.01" step="0.01" onChange={setAddAmountHandler} />
                 </NewExpenseControl>
                 <NewExpenseControl>
                     <label>Date</label>
-                    <input type="date" value={addDate} min="2019-01-01" step="2022-12-31" onChange={setAddDateHandler}/>
+                    <input type="date" value={addDate} min="2019-01-01" step="2022-12-31" onChange={setAddDateHandler} />
                 </NewExpenseControl>
                 <NewExpenseActions>
                     <button type="button" onClick={props.hideBtnhandler}>Add Expense</button>
